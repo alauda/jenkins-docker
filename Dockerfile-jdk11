@@ -4,9 +4,10 @@ FROM openjdk:11-jdk-buster
 # Avoid JENKINS-59569 - git LFS 2.7.1 fails clone with reference repository
 RUN echo 'deb http://ftp.debian.org/debian bullseye main' >> /etc/apt/sources.list.d/bullseye.list && \
     apt-get update -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
     apt-get install git -y && \
     apt-get install curl -y && \
+    apt-get install libgnutls30/testing -y && \
+    apt-get install python-all -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN ARCH= && ARCH_ALIAS= && dpkgArch="$(dpkg --print-architecture)" \
