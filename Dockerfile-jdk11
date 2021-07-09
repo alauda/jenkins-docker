@@ -8,6 +8,8 @@ RUN echo 'deb http://ftp.debian.org/debian bullseye main' >> /etc/apt/sources.li
     apt-get install curl -y && \
     apt-get install libgnutls30/testing -y && \
     apt-get install python-all -y && \
+    apt-get install sqlite3 -y && \
+    apt-get install libseccomp2 -y && \
     rm -rf /var/lib/apt/lists/*
 
 RUN ARCH= && ARCH_ALIAS= && dpkgArch="$(dpkg --print-architecture)" \
